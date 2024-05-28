@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div class="bodyimg"></div>
+    <h2>Full Stack</h2>
+  <table class="minimal-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let employee of highRatingEmployeesFull">
+        <td (click)="showEmployeeDetails(employee)">{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>SAP</h2>
+  <table  class="minimal-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of highRatingEmployeesSAP">
+        <td (click)="showEmployeeDetails(employee)">{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Salesforce</h2>
+  <table class="minimal-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of highRatingEmployeesSales">
+        <td (click)="showEmployeeDetails(employee)">{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+      </tr>
+    </tbody>
+    </table>
+
+    <h2>Finance</h2>
+    <table  class="minimal-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of highRatingEmployeesFin">
+          <td (click)="showEmployeeDetails(employee)">{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="selectedEmployee" class="popup">
+    
+      <div class="popup-content">
+          <h2>Employee Details</h2>
+          <span class="close" (click)="closePopup()">Close</span>
+          <p>Employee Name: {{employeeSelected?.name}}</p>
+          <p>Employee Manager: {{employeeSelected?.manager}}</p>
+          <p>Department: {{employeeSelected?.department}}</p>
+          <p>FeedBack:  {{employeeSelected?.feedback}}</p>
+       
+      </div>
+    </div>
+
+<app-footer></app-footer>
