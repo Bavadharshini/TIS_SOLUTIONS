@@ -47,14 +47,14 @@ export class EmployeeService {
   // Finance department
   new Employee('31', 'David', 'Finance', 'Alice', 4.5, 'Excellent performance', 'Financial Analysis', 5, 22),
   new Employee('32', 'Susan', 'Finance', 'Alice', 3.8, 'Good performance', 'Budgeting', 3, 14),
-  new Employee('33', 'John', 'Finance', 'Bob', 4.2, 'Very good performance', 'Risk Management', 1, 18),
-  new Employee('34', 'Betty', 'Finance', 'Bob', 4.0, 'Good performance', 'Auditing', 1, 20),
+  new Employee('33', 'John', 'Finance', 'Boba', 4.2, 'Very good performance', 'Risk Management', 1, 18),
+  new Employee('34', 'Betty', 'Finance', 'Boba', 4.0, 'Good performance', 'Auditing', 1, 20),
   new Employee('35', 'Charles', 'Finance', 'Alice', 4.6, 'Excellent performance', 'Tax Planning', 6, 21),
   new Employee('36', 'Diana', 'Finance', 'Alice', 3.9, 'Good performance', 'Financial Reporting', 3, 15),
-  new Employee('37', 'Edward', 'Finance', 'Bob', 4.8, 'Very good performance', 'Investment Strategies', 7, 23),
-  new Employee('38', 'Fiona', 'Finance', 'Bob', 4.8, 'Very good performance', 'Cost Control', 6, 22),
+  new Employee('37', 'Edward', 'Finance', 'Boba', 4.8, 'Very good performance', 'Investment Strategies', 7, 23),
+  new Employee('38', 'Fiona', 'Finance', 'Boba', 4.8, 'Very good performance', 'Cost Control', 6, 22),
   new Employee('39', 'George', 'Finance', 'Alice', 4.7, 'Very good performance', 'Cash Flow Management', 5, 20),
-  new Employee('40', 'Helen', 'Finance', 'Bob', 3.7, 'Good performance', 'Financial Modeling', 3, 14)
+  new Employee('40', 'Helen', 'Finance', 'Boba', 3.7, 'Good performance', 'Financial Modeling', 3, 14)
   ];
 
 
@@ -80,6 +80,40 @@ export class EmployeeService {
   getEmployeeByDepartmentFr(department:string){
     return this.employees.filter(v =>v.department === department && v.experience <= 1);
   }
+ filteredEmployees:Employee[] = [];
+ maxTransactionCount:number = 0;
+ maxTransactionEmployees:Employee[] = [];
+ changingTransactionEmployees:Employee[] = [];
+
+ 
+  getMaximumTransactionedEmployee(manager: string): Employee[] {
+    // Filter employees by manager name
+     this.filteredEmployees = this.employees.filter(employee => employee.manager === manager);
+
+    console.log(this.filteredEmployees);
+
+    //Find the maximum transaction count
+    this.maxTransactionCount = Math.max(...this.filteredEmployees.map(employee => employee.transactionCount));
+  
+    // Get all employees with the maximum transaction count
+     this.maxTransactionEmployees = this.filteredEmployees.filter(employee => employee.transactionCount === this.maxTransactionCount);
+    
+    return this.maxTransactionEmployees;
+  }
 
 
+  setEmployeeAppraisalData(id:string,rating:number,feedback:string,skills:string){
+    this.changingTransactionEmployees = this.employees.filter(emp=>emp.id === id );
+    if(this.changingTransactionEmployees.length  !=0){
+      this.changingTransactionEmployees[0].rating = rating;
+      this.changingTransactionEmployees[0].feedback = feedback;
+      this.changingTransactionEmployees[0].skillsToImprove = skills; 
+
+    }
+    else{
+     const newEmployee = new Employee(id,'','','',rating,feedback,skills,1,1);
+     this.employees.push(newEmployee);
+    }
+
+  }
 }

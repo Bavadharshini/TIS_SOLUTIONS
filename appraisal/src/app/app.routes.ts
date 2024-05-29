@@ -11,5 +11,6 @@ export const routes: Routes = [
     {path:'',component:DashboardComponent},
     {path:'personal-growth',component:PresonalGrowthComponent},
     {path:'ratings',component:ManagerComponent},
+    {path:'manager',component:RatingsComponent},
     {path:'compare',component:CompareComponent}
 ];

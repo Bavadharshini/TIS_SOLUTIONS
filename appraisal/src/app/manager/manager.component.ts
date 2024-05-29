@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { Employee } from '../Employee';
 @Component({
   selector: 'app-manager',
   standalone: true,
@@ -14,10 +15,12 @@ import { Router } from '@angular/router';
 export class ManagerComponent {
   submitted = false;
   model = new User('','','');
-  constructor(private service:UserService){}
+  
+  constructor(private service:UserService, private router:Router){}
   onSubmit(){
     if(this.service.getValidation(this.model.empId,this.model.password)){
       this.submitted = true;
+      this.router.navigate(['/manager']);
     }
     
   }
