@@ -50,8 +50,8 @@ export class EmployeeService {
     new Employee('34', 'Betty', 'Finance', 'Bob', 4.0, 'Good performance', 'Auditing'),
     new Employee('35', 'Charles', 'Finance', 'Alice', 4.6, 'Excellent performance', 'Tax Planning'),
     new Employee('36', 'Diana', 'Finance', 'Alice', 3.9, 'Good performance', 'Financial Reporting'),
-    new Employee('37', 'Edward', 'Finance', 'Bob', 4.1, 'Very good performance', 'Investment Strategies'),
-    new Employee('38', 'Fiona', 'Finance', 'Bob', 4.3, 'Very good performance', 'Cost Control'),
+    new Employee('37', 'Edward', 'Finance', 'Bob', 4.8, 'Very good performance', 'Investment Strategies'),
+    new Employee('38', 'Fiona', 'Finance', 'Bob', 4.8, 'Very good performance', 'Cost Control'),
     new Employee('39', 'George', 'Finance', 'Alice', 4.4, 'Very good performance', 'Cash Flow Management'),
     new Employee('40', 'Helen', 'Finance', 'Bob', 3.7, 'Good performance', 'Financial Modeling')
   ];
@@ -60,7 +60,7 @@ export class EmployeeService {
   constructor() { }
 
   getHighRatingEmployeesByRatings(department :string): Employee[] {
-    return this.employees.filter(employee =>employee.department === department && employee.rating > 4.5);
+    return this.employees.filter(v =>v.department === department && v.rating > 4.5);
   }
 
 

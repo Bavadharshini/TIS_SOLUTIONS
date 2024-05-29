@@ -57,4 +57,8 @@ export class TransactionService {
   ];
 
   constructor() { }
+
+  getQuarterlyWiseTransaction(department:string,quarter:string){
+    return this.transactions.filter(v=>v.department === department && v.quarter === quarter);
+  }
 }
