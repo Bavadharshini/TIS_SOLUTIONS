@@ -2,6 +2,29 @@
 <app-header></app-header>
 
 <div class="bodyimg"></div>
+
+<div>
+ 
+ <ul>Full Stack employee
+  <li >Experienced:{{totalFullStackExpEmployee.length}}</li> 
+  <li >Fresher : {{totalFullStackFrEmployee.length}}</li>
+  </ul>
+  <ul> SAP employee
+    <li >Experienced:{{totalSAPExpEmployee.length}}</li> 
+    <li >Fresher : {{totalSAPFrEmployee.length}}</li>
+  </ul>
+
+  <ul> Salesforce employee
+    <li >Experienced:{{totalSalesforceExpEmployee.length}}</li> 
+    <li >Fresher : {{totalSalesforceFrEmployee.length}}</li>
+  </ul>
+
+  <ul> Finance employee
+    <li >Experienced:{{totalFinanceExpEmployee.length}}</li> 
+    <li >Fresher : {{totalFinanceFrEmployee.length}}</li>
+  </ul>
+  <p>Total Employees: {{totalEmployee.length}} </p> 
+</div>
     <h2>Full Stack</h2>
   <table class="minimal-table">
     <thead>
@@ -74,6 +97,8 @@
           <p>Employee Manager: {{employeeSelected?.manager}}</p>
           <p>Department: {{employeeSelected?.department}}</p>
           <p>FeedBack:  {{employeeSelected?.feedback}}</p>
+          <p>Experience: {{employeeSelected?.experience}}</p>
+          <p>Transaction Volume: {{employeeSelected?.transactionCount}}</p>
        
       </div>
     </div>

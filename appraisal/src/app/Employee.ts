@@ -7,5 +7,8 @@ export class Employee{
         public rating:number,
         public feedback:string,
         public skillsToImprove:string,
+        public experience:number,
+        public transactionCount:number,
+
     ){ }
 }
