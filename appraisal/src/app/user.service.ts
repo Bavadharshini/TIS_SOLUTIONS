@@ -5,6 +5,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
+  currentManagerName:string = "";
   private managers: User[] = [
     new User('101', 'Bob', 'passwordBob123'),
     new User('102', 'Alice', 'passwordAlice123'),
@@ -17,11 +18,20 @@ export class UserService {
   getValidation(id:string,password:string):boolean{
 
     const validation = this.managers.filter(employee => employee.empId === id && employee.password === password);
+   
     if(validation.length !=0){
+      this.currentManagerName = validation[0].name;
+      console.log(this.currentManagerName)
       return true;
     }
     else{
       return false;
     }
   }
+
+  getManagerName(){
+    console.log(this.currentManagerName)
+    return this.currentManagerName;
+  }
+
 }
