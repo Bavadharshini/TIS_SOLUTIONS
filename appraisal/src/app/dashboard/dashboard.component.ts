@@ -21,6 +21,17 @@ export class DashboardComponent {
   highRatingEmployeesSAP: Employee[] = [];
   highRatingEmployeesSales: Employee[] = [];
   highRatingEmployeesFin: Employee[] = [];
+  totalEmployee:Employee[] = [];
+  totalFullStackExpEmployee:Employee[] = [];
+  totalSAPExpEmployee:Employee[] = [];
+  totalSalesforceExpEmployee:Employee[] = [];
+  totalFinanceExpEmployee:Employee[] = [];
+  totalFullStackFrEmployee:Employee[] = [];
+  totalSAPFrEmployee:Employee[] = [];
+  totalSalesforceFrEmployee:Employee[] = [];
+  totalFinanceFrEmployee:Employee[] = [];
+
+
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit() {
@@ -32,6 +43,15 @@ export class DashboardComponent {
       this.employeeService.getHighRatingEmployeesByRatings('Salesforce');
     this.highRatingEmployeesFin =
       this.employeeService.getHighRatingEmployeesByRatings('Finance');
+    this.totalEmployee = this.employeeService.getEmployee();
+    this.totalFullStackExpEmployee = this.employeeService.getEmployeeByDepartmentExp('Full stack');
+    this.totalSAPExpEmployee = this.employeeService.getEmployeeByDepartmentExp('SAP');
+    this.totalSalesforceExpEmployee = this.employeeService.getEmployeeByDepartmentExp('Salesforce');
+    this.totalFinanceExpEmployee = this.employeeService.getEmployeeByDepartmentExp('Finance');
+    this.totalFullStackFrEmployee = this.employeeService.getEmployeeByDepartmentFr('Full stack');
+    this.totalSAPFrEmployee = this.employeeService.getEmployeeByDepartmentFr('SAP');
+    this.totalSalesforceFrEmployee = this.employeeService.getEmployeeByDepartmentFr('Salesforce');
+    this.totalFinanceFrEmployee = this.employeeService.getEmployeeByDepartmentFr('Finance');
   }
 
   showEmployeeDetails(employee: Employee): void {

@@ -58,7 +58,31 @@ export class TransactionService {
 
   constructor() { }
 
-  getQuarterlyWiseTransaction(department:string,quarter:string){
+  getQuarterlyWiseTransaction(department:string,quarter:string):Transaction[]{
     return this.transactions.filter(v=>v.department === department && v.quarter === quarter);
   }
+
+  calculateProfitPercentageByDepartmentAndTransactionType(department: string, transactionType: string): number {
+    const filteredTransactions = this.transactions.filter(transaction =>
+        transaction.department === department && transaction.transactionType === transactionType
+    );
+    const totalOrderValue = filteredTransactions.reduce((total, transaction) => total + transaction.orderValueVolume, 0);
+    const totalCost = this.calculateTotalCostForDepartment(department);
+    const profit = totalOrderValue - totalCost;
+    const profitPercentage = (profit / totalCost) * 100;
+    return profitPercentage;
+}
+private calculateTotalCostForDepartment(department: string): number {
+    // You need to define your own logic to calculate the total cost for each department
+    // This could involve various expenses like operational costs, salaries, etc.
+    // For simplicity, let's assume a fixed cost of 70% of revenue for each department
+    // Modify this function according to your actual cost calculation logic
+    return 0.7 * this.transactions.reduce((total, transaction) => {
+        if (transaction.department === department) {
+            return total + transaction.orderValueVolume;
+        }
+        return total;
+    }, 0);
+}
+
 }
